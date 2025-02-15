@@ -5,7 +5,7 @@ public class Harpoon : MonoBehaviour
     [SerializeField] private float fireSpeed;
 
     private bool fired;
-    private float yVelOffset;
+    private Vector2 velOffset;
 
     private Collider2D coll;
     private Rigidbody2D rb;
@@ -32,7 +32,7 @@ public class Harpoon : MonoBehaviour
         if (fired)
         {
             // may need to adjust position when sprites are switched
-            rb.linearVelocity = - transform.right * fireSpeed + new Vector3(0, yVelOffset);
+            rb.linearVelocity = - transform.right * fireSpeed + new Vector3(velOffset.x, velOffset.y);
             //Vector2 nextpos = transform.position - transform.right * fireSpeed * Time.fixedDeltaTime;
             //rb.MovePosition(nextpos);
 
@@ -50,7 +50,7 @@ public class Harpoon : MonoBehaviour
         // unparent harpoon
         transform.SetParent(null, true);
 
-        yVelOffset = StatMan.sm.submods.getYVelocity();
+        velOffset = StatMan.sm.submods.getVelocity();
         fired = true;
     }
 

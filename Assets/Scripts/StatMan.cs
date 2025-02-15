@@ -6,6 +6,7 @@ public class StatMan : MonoBehaviour
 
     public SubmarineModules submods { get; private set; }
     public DestroyWhenOOR rangeCheck { get; private set; }
+    public Transform subfollow { get; private set; }
 
     private void Awake()
     {
@@ -38,5 +39,11 @@ public class StatMan : MonoBehaviour
     public void setRangeCheck(DestroyWhenOOR rc)
     {
         rangeCheck = rc;
+        subfollow = rc.transform;
+    }
+
+    public void setSubFollow(Transform sf)
+    {
+        subfollow = sf;
     }
 }

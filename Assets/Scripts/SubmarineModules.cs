@@ -87,18 +87,15 @@ public class SubmarineModules : MonoBehaviour
         ph.ApplyForceToReachVelocity(new Vector2(0, targetVy), force: vForce, moveY: true);
     }
 
-    public float getYVelocity()
-    {
-        return rb.linearVelocityY;
-    }
+// private functions
 
     private void rotateAtSpeed(Transform toRotate, float percent, float maxSpeed, float dt)
     {
         float currRot = toRotate.rotation.eulerAngles.z;
-        toRotate.rotation = Quaternion.Euler(0, 0, currRot + maxSpeed * percent * dt);
+        toRotate.rotation = Quaternion.Euler(0, 0, currRot - maxSpeed * percent * dt);
     }
 
-    public void rotateMotor()
+    private void rotateMotor()
     {
         float targetAngle = Mathf.Atan2(-rb.linearVelocityY, -rb.linearVelocityX) * Mathf.Rad2Deg - 90;
         float angle = Mathf.SmoothDampAngle(motor.eulerAngles.z, targetAngle, ref motorRefVel, motorSmoothTime);
@@ -110,9 +107,56 @@ public class SubmarineModules : MonoBehaviour
         harpoon = Instantiate(harpoonPrefab, harpoonSpawnPoint).GetComponent<Harpoon>();
     }
 
+// public functions for controller interface
+    public void setSteer(float input) // input range from [-1, 1]
+    {
+        hspeedInput = input;
+    }
+
+    public void setSpeed(float input, bool keycon) // speed setting; keycon is true if not using custom controllers
+    {
+        if (keycon) // increase/decrease speed by amount "input" for keyboard or standard controller
+        {
+            vspeedInput = Mathf.Clamp(vspeedInput + input, 0.0f, 1.0f);
+        }
+        else { // only set speed if input > 0 (< 0 signifies no input)
+            vspeedInput = (input >= 0) ? input : vspeedInput;
+        }
+    }
+
+    public void setNetAim(float input) // input range from [-1, 1]
+    {
+        netAimInput = input;
+    }
+
+    public void setHarpoonAim(float input) // input range from [-1, 1]
+    {
+        harpoonAimInput = input;
+    }
+
+    public void setNetFire(bool input) // button
+    {
+        netFireInput = input;
+    }
+
+    public void setHarpoonFire(bool input) // button
+    {
+        harpoonFireInput = input;
+    }
+
+    public void setShield(float input) // input range from [-1, 1]
+    {
+        shieldInput = input;
+    }
+
+// public functions that aren't for controller interface
     public void harpoonReload()
     {
         harpoonReady = true;
     }
 
+    public Vector2 getVelocity()
+    {
+        return rb.linearVelocity;
+    }
 }
