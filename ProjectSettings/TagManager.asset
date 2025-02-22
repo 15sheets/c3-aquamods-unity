@@ -45,5 +45,8 @@ TagManager:
   - name: submarine
     uniqueID: 3793515103
     locked: 0
+  - name: UI
+    uniqueID: 22921837
+    locked: 0
   m_RenderingLayers:
   - Default

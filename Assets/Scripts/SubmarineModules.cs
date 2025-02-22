@@ -6,6 +6,8 @@ public class SubmarineModules : MonoBehaviour
 {
     // transforms of other parts of submarine
     public Transform netgun;
+    public Transform netSpawnPoint;
+    public GameObject netPrefab;
     
     public Transform harpoongun;
     public Transform harpoonSpawnPoint;
@@ -13,6 +15,9 @@ public class SubmarineModules : MonoBehaviour
 
     public Transform motor;
     public Transform shield;
+
+    public Transform battery;
+    public Health playerhp;
 
     [SerializeField] private float maxRotationSpeed; // guns, shield share a rotation speed
     [SerializeField] private float maxHspeed; // max horizontal travel speed
@@ -24,31 +29,38 @@ public class SubmarineModules : MonoBehaviour
     private float motorRefVel = 0;
 
     // variables related to gun cooldowns
-    //public bool netReady;
+    public bool netReady;
     public bool harpoonReady;
 
     // vars storing inputs from controller
     private bool netFireInput;
-    public bool harpoonFireInput;
-    public float netAimInput;
-    public float harpoonAimInput;
-    public float shieldInput;
-    public float vspeedInput; // this is tracking slider position, not rotation speed, so... special case...?
-    public float hspeedInput;
+    private bool harpoonFireInput;
+    private bool batteryInput;
+    private float netAimInput;
+    private float harpoonAimInput;
+    private float shieldInput;
+    private float vspeedInput; // this is tracking slider position, not rotation speed, so... special case...?
+    private float hspeedInput;
 
     private PhysicsHelper ph;
     private Rigidbody2D rb;
 
     private Harpoon harpoon;
+    private Net net;
+
+    private static float maxhpRotation = 0;
+    private static float minhpRotation = -120;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         ph = GetComponent<PhysicsHelper>();
         rb = GetComponent<Rigidbody2D>();
+        //playerhp = battery.GetComponent<Health>();
 
         StatMan.sm.setSubmarine(this);
         newHarpoon();
+        newNet();
 
         //netReady = true;
         //harpoonReady = true;
@@ -65,6 +77,10 @@ public class SubmarineModules : MonoBehaviour
         // rotate motor to face direction (do we want to have a max motor rotation speed? or nah)
         rotateMotor();
 
+        // rotate battery to match hp and animate as necessary
+        rotateBattery();
+        playerhp.animateHealing(batteryInput);
+
         // deal with guns firing
         if (harpoonFireInput && harpoonReady)
         {
@@ -72,13 +88,17 @@ public class SubmarineModules : MonoBehaviour
             harpoon.fire();
             newHarpoon();
         }
+        if (netFireInput && netReady)
+        {
+            netReady = false;
+            net.fire();
+            newNet();
+        }
 
     }
 
     private void FixedUpdate()
     {
-        // move submarine body here (using physics?)
-
         // move horizontally
         ph.ApplyForceToReachVelocity(new Vector2(hspeedInput * maxHspeed, 0), force: hForce, moveX: true);
 
@@ -102,12 +122,28 @@ public class SubmarineModules : MonoBehaviour
         motor.rotation = Quaternion.Euler(0, 0, angle);
     }
 
+    private void rotateBattery()
+    {
+        if (batteryInput)
+        {
+            playerhp.heal(Time.deltaTime);
+        }
+
+        float targetAngle = Mathf.LerpAngle(minhpRotation, maxhpRotation, playerhp.getHealthPercent());
+        battery.rotation = Quaternion.Euler(0, 0, targetAngle);
+    }
+
     private void newHarpoon()
     {
         harpoon = Instantiate(harpoonPrefab, harpoonSpawnPoint).GetComponent<Harpoon>();
     }
 
-// public functions for controller interface
+    private void newNet() 
+    {
+        net = Instantiate(netPrefab, netSpawnPoint).GetComponent<Net>();
+    }
+
+    // public functions for controller interface
     public void setSteer(float input) // input range from [-1, 1]
     {
         hspeedInput = input;
@@ -149,10 +185,20 @@ public class SubmarineModules : MonoBehaviour
         shieldInput = input;
     }
 
+    public void setBattery(bool input)
+    {
+        batteryInput = input;
+    }
+
 // public functions that aren't for controller interface
     public void harpoonReload()
     {
         harpoonReady = true;
+    }
+
+    public void netReload()
+    {
+        netReady = true;
     }
 
     public Vector2 getVelocity()

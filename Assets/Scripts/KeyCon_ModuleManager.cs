@@ -57,7 +57,7 @@ public class KeyCon_ModuleManager : MonoBehaviour
         } else
         {
             mod1spr.transform.position -= (playerid == 1) ? Vector3.zero : moduleUIPosDist * Vector3.right;
-            mod2spr.transform.position += moduleUIPosDist * Vector3.right;
+            mod2spr.transform.position = mod1spr.transform.position + moduleUIPosDist * Vector3.right;
             //mod2spr.transform.position = mod1spr.transform.position + ((playerid == 1) ? 1 : -1) * Vector3.right * moduleUIPosDist;
         }
 

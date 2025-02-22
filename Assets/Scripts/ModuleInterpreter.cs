@@ -57,7 +57,7 @@ public class ModuleInterpreter : MonoBehaviour
                 submarine.setShield(sliderValue);
                 break;
             case ModuleIdentity.BATTERY: // TODO !!!
-                // fill in once battery mechanic is working
+                submarine.setBattery(buttonValue);
                 break;
             default:
                 break;
@@ -101,6 +101,72 @@ public class ModuleInterpreter : MonoBehaviour
     {
         if (input.performed) {
             identity = ModuleParking.mp.switchWithSlot(identity, 4);
+        }
+    }
+
+    // keyboard specific functions... check if shift isn't pressed before switching
+    // jank ass method :/ thanks unity
+    public void Lkey_switch1With1(InputAction.CallbackContext input)
+    {
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            switchWith1(input);
+        }
+    }
+
+    public void Lkey_switch1With2(InputAction.CallbackContext input)
+    {
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            switchWith2(input);
+        }
+    }
+
+    public void Lkey_switch1With3(InputAction.CallbackContext input)
+    {
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            switchWith3(input);
+        }
+    }
+
+    public void Lkey_switch1With4(InputAction.CallbackContext input)
+    {
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            switchWith4(input);
+        }
+    }
+
+    public void Rkey_switch1With1(InputAction.CallbackContext input)
+    {
+        if (!Input.GetKey(KeyCode.RightShift))
+        {
+            switchWith1(input);
+        }
+    }
+
+    public void Rkey_switch1With2(InputAction.CallbackContext input)
+    {
+        if (!Input.GetKey(KeyCode.RightShift))
+        {
+            switchWith2(input);
+        }
+    }
+
+    public void Rkey_switch1With3(InputAction.CallbackContext input)
+    {
+        if (!Input.GetKey(KeyCode.RightShift))
+        {
+            switchWith3(input);
+        }
+    }
+
+    public void Rkey_switch1With4(InputAction.CallbackContext input)
+    {
+        if (!Input.GetKey(KeyCode.RightShift))
+        {
+            switchWith4(input);
         }
     }
 

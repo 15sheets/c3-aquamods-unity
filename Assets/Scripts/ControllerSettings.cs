@@ -51,12 +51,11 @@ public class ControllerSettings : MonoBehaviour
         {
             player1_kc.createKeyConModuleUI(1, player1_contype);
             player2_kc.createKeyConModuleUI(2, player2_contype);
+
+            forceSetModuleIdentity(player1_kc, ModuleInterpreter.ModuleIdentity.STEER);
+            forceSetModuleIdentity(player2_kc, ModuleInterpreter.ModuleIdentity.AIM);
         }
-        if (player2_contype == ControllerType.CON) // only 1 prefab for con so need to manually make sure module identity is correct
-        {
-            forceSetModuleIdentity(player2_kc.mod1, ModuleInterpreter.ModuleIdentity.AIM);
-        }
-        // later, need to think about changing conroller types mid-game? think abt how to deal with module inventory. or just reset every time shrug
+        // later, need to think about changing controller types mid-game? think abt how to deal with module inventory. or just reset every time shrug
     }
 
     // Update is called once per frame
@@ -126,9 +125,13 @@ public class ControllerSettings : MonoBehaviour
         return null;
     }
 
-    private void forceSetModuleIdentity(ModuleInterpreter module, ModuleInterpreter.ModuleIdentity id)
+    private void forceSetModuleIdentity(KeyCon_ModuleManager player, ModuleInterpreter.ModuleIdentity id1, ModuleInterpreter.ModuleIdentity id2=ModuleInterpreter.ModuleIdentity.NONE)
     {
-        module.identity = id;
+        player.mod1_init = id1;
+        player.mod2_init = id2;
+
+        player.mod1.identity = id1;
+        player.mod2.identity = id2;
     }
 
     public void createNewPI()

@@ -24,6 +24,22 @@ PrefabInstance:
       propertyPath: m_DefaultControlScheme
       value: KeyRight
       objectReference: {fileID: 0}
+    - target: {fileID: 7089936438142658925, guid: b54f74d46fb2f4644aeda74a3c6f4dcc, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Rkey_switch1With1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089936438142658925, guid: b54f74d46fb2f4644aeda74a3c6f4dcc, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Rkey_switch1With2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089936438142658925, guid: b54f74d46fb2f4644aeda74a3c6f4dcc, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Rkey_switch1With3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089936438142658925, guid: b54f74d46fb2f4644aeda74a3c6f4dcc, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Rkey_switch1With4
+      objectReference: {fileID: 0}
     - target: {fileID: 7992959626257727926, guid: b54f74d46fb2f4644aeda74a3c6f4dcc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
