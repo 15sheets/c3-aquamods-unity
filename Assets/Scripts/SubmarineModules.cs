@@ -33,6 +33,7 @@ public class SubmarineModules : MonoBehaviour
     public bool harpoonReady;
 
     // vars storing inputs from controller
+    // if needed, make these public to debug
     private bool netFireInput;
     private bool harpoonFireInput;
     private bool batteryInput;
@@ -48,6 +49,7 @@ public class SubmarineModules : MonoBehaviour
     private Harpoon harpoon;
     private Net net;
 
+    // rotation values of battery that correspond to max and min hp
     private static float maxhpRotation = 0;
     private static float minhpRotation = -120;
 
@@ -61,9 +63,6 @@ public class SubmarineModules : MonoBehaviour
         StatMan.sm.setSubmarine(this);
         newHarpoon();
         newNet();
-
-        //netReady = true;
-        //harpoonReady = true;
     }
 
     // Update is called once per frame
@@ -74,7 +73,7 @@ public class SubmarineModules : MonoBehaviour
         rotateAtSpeed(harpoongun, harpoonAimInput, maxRotationSpeed, Time.deltaTime);
         rotateAtSpeed(shield, shieldInput, maxRotationSpeed, Time.deltaTime);
 
-        // rotate motor to face direction (do we want to have a max motor rotation speed? or nah)
+        // rotate motor to face direction (do we want to have a separate max motor rotation speed? or nah)
         rotateMotor();
 
         // rotate battery to match hp and animate as necessary
@@ -82,6 +81,9 @@ public class SubmarineModules : MonoBehaviour
         playerhp.animateHealing(batteryInput);
 
         // deal with guns firing
+        // btw if you're looking through the scripts in search of the rest of the gun logic, it's in the animator
+        // reload time and net scaling is done through animation and animation events
+        // i'm not explaining that go google it
         if (harpoonFireInput && harpoonReady)
         {
             harpoonReady = false;
@@ -108,7 +110,6 @@ public class SubmarineModules : MonoBehaviour
     }
 
 // private functions
-
     private void rotateAtSpeed(Transform toRotate, float percent, float maxSpeed, float dt)
     {
         float currRot = toRotate.rotation.eulerAngles.z;
@@ -143,7 +144,7 @@ public class SubmarineModules : MonoBehaviour
         net = Instantiate(netPrefab, netSpawnPoint).GetComponent<Net>();
     }
 
-    // public functions for controller interface
+// public functions for controller interface
     public void setSteer(float input) // input range from [-1, 1]
     {
         hspeedInput = input;

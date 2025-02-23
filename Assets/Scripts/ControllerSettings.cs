@@ -119,10 +119,11 @@ public class ControllerSettings : MonoBehaviour
         }
     }
 
-    // fill out later
     private ModuleInterpreter createNewAQPlayer()
     {
-        return null;
+        return PlayerInput.Instantiate(AQPrefab).GetComponent<ModuleInterpreter>();
+        //Debug.Log("createNewAQPlayer isn't implemented yet");
+        //return null;
     }
 
     private void forceSetModuleIdentity(KeyCon_ModuleManager player, ModuleInterpreter.ModuleIdentity id1, ModuleInterpreter.ModuleIdentity id2=ModuleInterpreter.ModuleIdentity.NONE)
@@ -134,8 +135,13 @@ public class ControllerSettings : MonoBehaviour
         player.mod2.identity = id2;
     }
 
+    /// <summary>
+    /// create new playerinputs upon game starting for the first time
+    /// </summary>
     public void createNewPI()
     {
+        // this is old stuff. dead code will replace. not needed rn
+        /*
         Scene currScene = SceneManager.GetActiveScene();
         bool spawnPI = currScene.name == "angela_scene";
         if (spawnPI)
@@ -147,5 +153,6 @@ public class ControllerSettings : MonoBehaviour
         {
             Instantiate(moduleParkingPrefab);
         }
+        */
     }
 }

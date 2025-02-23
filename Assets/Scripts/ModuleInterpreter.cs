@@ -11,7 +11,7 @@ public class ModuleInterpreter : MonoBehaviour
     //public SubmarineModules submarine; 
 
     public enum ModuleIdentity { NONE, STEER, SPEED, AIM, SHOOT, SHIELD, BATTERY };
-    public ModuleIdentity identity; // set initial value in editor
+    public ModuleIdentity identity; // this should be NONE for AQs
 
     private float sliderValue;
     private bool buttonValue;
@@ -34,7 +34,7 @@ public class ModuleInterpreter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SubmarineModules submarine = StatMan.sm.submods;
+        submarine = StatMan.sm.submods;
 
         // update submarine values here based on inputs
         switch (identity)
@@ -56,7 +56,7 @@ public class ModuleInterpreter : MonoBehaviour
             case ModuleIdentity.SHIELD:
                 submarine.setShield(sliderValue);
                 break;
-            case ModuleIdentity.BATTERY: // TODO !!!
+            case ModuleIdentity.BATTERY: 
                 submarine.setBattery(buttonValue);
                 break;
             default:
@@ -64,10 +64,10 @@ public class ModuleInterpreter : MonoBehaviour
         }
     }
 
-    // setting keycon values
+    // functions for setting keycon values
     public void setSliderValue(InputAction.CallbackContext input)
     {
-        sliderValue = input.ReadValue<float>(); // double check that this is correct...
+        sliderValue = input.ReadValue<float>(); 
     }
 
     public void setButtonValue(InputAction.CallbackContext input)
@@ -153,7 +153,7 @@ public class ModuleInterpreter : MonoBehaviour
             switchWith2(input);
         }
     }
-
+     
     public void Rkey_switch1With3(InputAction.CallbackContext input)
     {
         if (!Input.GetKey(KeyCode.RightShift))
@@ -171,27 +171,27 @@ public class ModuleInterpreter : MonoBehaviour
     }
 
     // setting custom values (call functions directly)
-    //TODO: FINISH FILLING IN ONCE WE'VE NAILED DOWN INTERFACE BTWN ARDUINO AND UNITY
-    /*
+    //TODO: MAY NEED TO EDIT AS WE FINALIZE INTERFACE BTWN ARDUINO AND UNITY
+    
     public void setSpeed(InputAction.CallbackContext input)
     {
-
+        submarine.setSpeed(input.ReadValue<float>(), false);
     }
 
     public void setSteer(InputAction.CallbackContext input)
     {
-
+        submarine.setSteer(input.ReadValue<float>());
     }
 
     public void setShield(InputAction.CallbackContext input)
     {
-
+        submarine.setShield(input.ReadValue<float>());
     }
 
     public void setAim(InputAction.CallbackContext input)
     {
-        if (net) { submarine.setNetAim(sliderValue); }
-        else { submarine.setHarpoonAim(sliderValue); }
+        if (net) { submarine.setNetAim(input.ReadValue<float>()); } // maybe it's more optimal to have this be one function with an extra input? shrug
+        else { submarine.setHarpoonAim(input.ReadValue<float>()); }
     }
 
     public void setShoot(InputAction.CallbackContext input)
@@ -202,10 +202,10 @@ public class ModuleInterpreter : MonoBehaviour
         else { submarine.setHarpoonFire(button); }
     }
 
-    //TODO
     public void setBattery(InputAction.CallbackContext input)
     {
-        // FILL IN ONCE BATTERY IS WORKING
+        bool button = input.ReadValueAsButton();
+        submarine.setBattery(button);
     }
-    */
+    
 }
