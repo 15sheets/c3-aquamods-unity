@@ -53,6 +53,12 @@ public class SubmarineModules : MonoBehaviour
     private static float maxhpRotation = 0;
     private static float minhpRotation = -120;
 
+    // current x,y velocities, for smoothdamp purposes
+    private float smoothTime = 0.1f;
+    private Vector3 currVel = Vector3.zero;
+    private float refvelx;
+    private float refvely;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -102,11 +108,17 @@ public class SubmarineModules : MonoBehaviour
     private void FixedUpdate()
     {
         // move horizontally
-        ph.ApplyForceToReachVelocity(new Vector2(hspeedInput * maxHspeed, 0), force: hForce, moveX: true);
+        //ph.ApplyForceToReachVelocity(new Vector2(hspeedInput * maxHspeed, 0), force: hForce, moveX: true);
+        currVel.x = Mathf.SmoothDamp(currVel.x, hspeedInput * maxHspeed, ref refvelx, smoothTime);
+        //float nextHPos = transform.position.x + hspeedInput * maxHspeed;
 
         // move vertically
         float targetVy = -Mathf.Lerp(vSpeedRange[0], vSpeedRange[1], vspeedInput);
-        ph.ApplyForceToReachVelocity(new Vector2(0, targetVy), force: vForce, moveY: true);
+        currVel.y = Mathf.SmoothDamp(currVel.y, targetVy, ref refvely, smoothTime);
+
+        rb.MovePosition(transform.position + currVel * Time.deltaTime);
+
+        //ph.ApplyForceToReachVelocity(new Vector2(0, targetVy), force: vForce, moveY: true);
     }
 
 // private functions
@@ -118,7 +130,7 @@ public class SubmarineModules : MonoBehaviour
 
     private void rotateMotor()
     {
-        float targetAngle = Mathf.Atan2(-rb.linearVelocityY, -rb.linearVelocityX) * Mathf.Rad2Deg - 90;
+        float targetAngle = Mathf.Atan2(-currVel.y, -currVel.x) * Mathf.Rad2Deg - 90;
         float angle = Mathf.SmoothDampAngle(motor.eulerAngles.z, targetAngle, ref motorRefVel, motorSmoothTime);
         motor.rotation = Quaternion.Euler(0, 0, angle);
     }

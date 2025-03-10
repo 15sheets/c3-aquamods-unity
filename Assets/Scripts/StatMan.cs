@@ -31,6 +31,14 @@ public class StatMan : MonoBehaviour
         
     }
 
+// functions
+
+    public void damagePlayer(float dmgpercent)
+    {
+        submods.playerhp.damage(dmgpercent);
+    }
+
+// setting references
     public void setSubmarine(SubmarineModules sub)
     {
         submods = sub;

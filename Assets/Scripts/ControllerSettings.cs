@@ -20,7 +20,7 @@ public class ControllerSettings : MonoBehaviour
 
     public bool player1_net;
 
-    //public bool playerInputExists;
+    public bool playerInputExists=false;
 
     public KeyCon_ModuleManager player1_kc { get; private set; }
     public KeyCon_ModuleManager player2_kc { get; private set; }
@@ -44,24 +44,29 @@ public class ControllerSettings : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // this is the code that should run upon entering the main game scene for the first time
-        createNewPlayer1();
-        createNewPlayer2();
-        if (player1_contype != ControllerType.AQ)
-        {
-            player1_kc.createKeyConModuleUI(1, player1_contype);
-            player2_kc.createKeyConModuleUI(2, player2_contype);
-
-            forceSetModuleIdentity(player1_kc, ModuleInterpreter.ModuleIdentity.STEER);
-            forceSetModuleIdentity(player2_kc, ModuleInterpreter.ModuleIdentity.AIM);
-        }
-        // later, need to think about changing controller types mid-game? think abt how to deal with module inventory. or just reset every time shrug
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!playerInputExists && StatMan.sm.subfollow != null)
+        {
+            playerInputExists = true;
 
+            // this is the code that should run upon entering the main game scene for the first time
+            createNewPlayer1();
+            createNewPlayer2();
+            if (player1_contype != ControllerType.AQ)
+            {
+                player1_kc.createKeyConModuleUI(1, player1_contype);
+                player2_kc.createKeyConModuleUI(2, player2_contype);
+
+                forceSetModuleIdentity(player1_kc, ModuleInterpreter.ModuleIdentity.STEER);
+                forceSetModuleIdentity(player2_kc, ModuleInterpreter.ModuleIdentity.AIM);
+            }
+            // later, need to think about changing controller types mid-game? think abt how to deal with module inventory. or just reset every time shrug
+        }
     }
 
     private void createNewPlayer1()

@@ -50,6 +50,9 @@ public class Net : MonoBehaviour
 
     public void fire()
     {
+        // turn on collider
+        rb.simulated = true;
+
         fired = true;
         anim.SetBool("fired", fired);
         velOffset = StatMan.sm.submods.getVelocity();
@@ -63,9 +66,6 @@ public class Net : MonoBehaviour
     public void readyToFire()
     {
         StatMan.sm.submods.netReload();
-
-        // turn on collider
-        rb.simulated = true;
     }
 
     public void fireAnimFinished()

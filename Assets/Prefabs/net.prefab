@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 2324123277837889821}
   - component: {fileID: 3082686092942078816}
   - component: {fileID: 1490755612647130950}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: net
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

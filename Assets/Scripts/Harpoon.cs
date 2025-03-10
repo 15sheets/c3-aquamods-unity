@@ -47,6 +47,9 @@ public class Harpoon : MonoBehaviour
 
     public void fire()
     {
+        // turn on collider
+        rb.simulated = true;
+
         // unparent harpoon
         transform.SetParent(null, true);
 
@@ -58,7 +61,6 @@ public class Harpoon : MonoBehaviour
     {
         StatMan.sm.submods.harpoonReload();
         
-        // turn on collider
-        rb.simulated = true;
+        
     }
 }

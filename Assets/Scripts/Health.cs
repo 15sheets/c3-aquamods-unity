@@ -49,12 +49,12 @@ public class Health : MonoBehaviour
     }
 
     /// <summary>
-    /// do dmgamt of damage to object
+    /// do dmgpct of damage to object
     /// </summary>
     /// <param name="dmgamt"></param>
     public void damage(float dmgamt)
     {
-        hp -= dmgamt;
+        hp -= dmgamt * maxhp;
         damaged.Invoke();
         // todo: play an animation (flash main player body? or just health? play a sound effect?)
         // rotate hp shape..

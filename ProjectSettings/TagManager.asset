@@ -16,8 +16,8 @@ TagManager:
   - Enemies
   - Terrain
   - Background
-  - 
-  - 
+  - net
+  - harpoon
   - 
   - 
   - 
@@ -44,6 +44,9 @@ TagManager:
     locked: 0
   - name: submarine
     uniqueID: 3793515103
+    locked: 0
+  - name: fish
+    uniqueID: 2406939171
     locked: 0
   - name: UI
     uniqueID: 22921837

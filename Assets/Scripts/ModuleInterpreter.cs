@@ -75,6 +75,7 @@ public class ModuleInterpreter : MonoBehaviour
         buttonValue = input.ReadValueAsButton();
     }
     
+    // TODO: add checks that set submarine inputs back to default when modules are switched out
     public void switchWith1(InputAction.CallbackContext input)
     {
         if (input.performed) {
