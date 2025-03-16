@@ -79,7 +79,6 @@ public class ModuleInterpreter : MonoBehaviour
     public void switchWith1(InputAction.CallbackContext input)
     {
         if (input.performed) {
-            Debug.Log("switch event is happening");
             identity = ModuleParking.mp.switchWithSlot(identity, 1);
         }
     }

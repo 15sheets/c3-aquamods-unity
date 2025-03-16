@@ -49,16 +49,31 @@ public class Health : MonoBehaviour
     }
 
     /// <summary>
-    /// do dmgpct of damage to object
+    /// do dmgpct of object's max hp of damage to object
     /// </summary>
-    /// <param name="dmgamt"></param>
-    public void damage(float dmgamt)
+    /// <param name="dmgpct"></param>
+    public void damage(float dmgpct)
     {
-        hp -= dmgamt * maxhp;
+        hp -= dmgpct * maxhp;
         damaged.Invoke();
         // todo: play an animation (flash main player body? or just health? play a sound effect?)
         // rotate hp shape..
 
+        if (hp <= 0f)
+        {
+            death.Invoke();
+        }
+    }
+
+    /// <summary>
+    /// do dmgamt of damage to object
+    /// </summary>
+    /// <param name="dmgamt"></param>
+    public void damageamt(float dmgamt)
+    {
+        hp -= dmgamt;
+        damaged.Invoke();
+        
         if (hp <= 0f)
         {
             death.Invoke();

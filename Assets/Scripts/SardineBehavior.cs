@@ -83,6 +83,7 @@ public class SardineBehavior : EnemyBehavior
 
     public override void doAttack()
     {
+        // charge attack
         if (attackStart && chargeTimer > 0)
         {
             anim.SetBool("moving", false);
@@ -91,7 +92,7 @@ public class SardineBehavior : EnemyBehavior
             chargeTimer -= Time.deltaTime;
 
             faceTarget();
-        } 
+        } // finish charging, start attacking
         else if (attackStart && chargeTimer <= 0) {
             hitPlayer = false;
             attackStart = false;
@@ -99,7 +100,7 @@ public class SardineBehavior : EnemyBehavior
 
             attackTimer = attackTime;
         }
-        else
+        else // attack
         {
             // update timer
             attackTimer -= Time.deltaTime;

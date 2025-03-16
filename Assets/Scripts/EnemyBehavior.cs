@@ -20,12 +20,9 @@ public class EnemyBehavior : MonoBehaviour
     public bool stunCondition;
 
     // private variables
-    [HideInInspector]
-    public Vector3 targetvector;
-    [HideInInspector]
-    public Rigidbody2D rb;
-    [HideInInspector]
-    public PhysicsHelper ph;
+    [HideInInspector] public Vector3 targetvector;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public PhysicsHelper ph;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()

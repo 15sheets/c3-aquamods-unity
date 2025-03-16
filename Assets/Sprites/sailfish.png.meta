@@ -1,0 +1,338 @@
+fileFormatVersion: 2
+guid: 77ec5c3bf2ca2d842a3ce855ed4a237c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7468404252970203432
+    second: sailfish_0
+  - first:
+      213: -6354194480232703166
+    second: sailfish_1
+  - first:
+      213: -1579147340959810300
+    second: sailfish_2
+  - first:
+      213: -3653028905864788999
+    second: sailfish_3
+  - first:
+      213: -3567816588948864432
+    second: sailfish_4
+  - first:
+      213: 6790166772380931808
+    second: sailfish_5
+  - first:
+      213: -1499449811508176897
+    second: sailfish_6
+  - first:
+      213: -3550320273088491781
+    second: sailfish_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sailfish_0
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 609
+        width: 44
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8293e49491a15a760800000000000000
+      internalID: 7468404252970203432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sailfish_1
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 531
+        width: 120
+        height: 112
+      alignment: 9
+      pivot: {x: 0.8840469, y: 0.8991966}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24b5bf349cd51d7a0800000000000000
+      internalID: -6354194480232703166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sailfish_2
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 553
+        width: 167
+        height: 62
+      alignment: 9
+      pivot: {x: 0.90364593, y: 0.2004552}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40d761e2cddb51ae0800000000000000
+      internalID: -1579147340959810300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sailfish_3
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 555
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f302bf8095dd4dc0800000000000000
+      internalID: -3653028905864788999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sailfish_4
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 255
+        width: 174
+        height: 223
+      alignment: 9
+      pivot: {x: 0.9763413, y: 0.5128661}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05205f727b19c7ec0800000000000000
+      internalID: -3567816588948864432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sailfish_5
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 370
+        width: 234
+        height: 134
+      alignment: 9
+      pivot: {x: 0.80229616, y: 0.22836713}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e61d6124b48b3e50800000000000000
+      internalID: 6790166772380931808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sailfish_6
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 283
+        width: 179
+        height: 22
+      alignment: 9
+      pivot: {x: 0.06261576, y: 0.46878192}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff757824752e03be0800000000000000
+      internalID: -1499449811508176897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sailfish_7
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 39
+        width: 568
+        height: 181
+      alignment: 9
+      pivot: {x: 0.6381053, y: 0.5892275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfe41b3a58ababec0800000000000000
+      internalID: -3550320273088491781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6afc35234d7fea9478b63bc0c811000e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sailfish_0: 7468404252970203432
+      sailfish_1: -6354194480232703166
+      sailfish_2: -1579147340959810300
+      sailfish_3: -3653028905864788999
+      sailfish_4: -3567816588948864432
+      sailfish_5: 6790166772380931808
+      sailfish_6: -1499449811508176897
+      sailfish_7: -3550320273088491781
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

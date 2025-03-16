@@ -8,6 +8,9 @@ public class StatMan : MonoBehaviour
     public DestroyWhenOOR rangeCheck { get; private set; }
     public Transform subfollow { get; private set; }
 
+    public float netDamage=1; // not sure if i should be putting these in this file... well, whatever.
+    public float harpoonDamage=5;
+
     private void Awake()
     {
         if (sm != null && sm != this)
