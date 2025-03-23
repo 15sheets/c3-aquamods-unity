@@ -5,6 +5,7 @@ public class StatMan : MonoBehaviour
     public static StatMan sm { get; private set; }
 
     public SubmarineModules submods { get; private set; }
+    public Collider2D subcoll { get; private set; }
     public DestroyWhenOOR rangeCheck { get; private set; }
     public Transform subfollow { get; private set; }
 
@@ -45,6 +46,7 @@ public class StatMan : MonoBehaviour
     public void setSubmarine(SubmarineModules sub)
     {
         submods = sub;
+        subcoll = sub.GetComponent<Collider2D>();
     }
 
     public void setRangeCheck(DestroyWhenOOR rc)

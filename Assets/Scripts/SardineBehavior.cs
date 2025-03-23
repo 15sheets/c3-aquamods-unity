@@ -58,12 +58,12 @@ public class SardineBehavior : EnemyBehavior
     // when hitting the player
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // check if player
-        if (collision.gameObject.layer == 6)
+        // check if player or shield
+        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 12)
         {
             hitPlayer = true;
-            StatMan.sm.damagePlayer(playerDamage);
             rb.AddForce(targetvector.normalized * -knockbackForce, ForceMode2D.Impulse);
+            if (collision.gameObject.layer == 6) StatMan.sm.damagePlayer(playerDamage);
         }
         // damage player
         // small backwards impulse

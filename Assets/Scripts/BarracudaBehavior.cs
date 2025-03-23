@@ -90,17 +90,21 @@ public class BarracudaBehavior : EnemyBehavior
 
         chaseTarget(maxMoveForce, maxMoveSpeed);
 
-        int mask = LayerMask.GetMask("Player");
-        if (!attackStart && !attackDone)
+        int playermask = LayerMask.GetMask("Player");
+        int shieldmask = LayerMask.GetMask("shield");
+        if (!attackStart && !attackDone && !hitPlayer)
         {
+            Collider2D attackHitPlayer = Physics2D.OverlapCircle(attackCastCenter.position, attackColliderRadius, playermask);
+            Collider2D attackHitShield = Physics2D.OverlapCircle(attackCastCenter.position, attackColliderRadius, shieldmask);
+
             // if attackStart is off then raycast for attack hit
-            if (!hitPlayer && Physics2D.OverlapCircle(attackCastCenter.position, attackColliderRadius, mask))
+            if (attackHitPlayer || attackHitShield)
             {
                 // if attack hits and it hasn't already hit this time, knockback fish + damage player
                 hitPlayer = true;
-                StatMan.sm.damagePlayer(playerDamage);
                 rb.AddForce(targetvector.normalized * -knockbackForce, ForceMode2D.Impulse);
 
+                if (!attackHitShield) StatMan.sm.damagePlayer(playerDamage);
             }
         }
 
@@ -144,7 +148,6 @@ public class BarracudaBehavior : EnemyBehavior
     public void die()
     {
         // add a particle system here later?
-        // animate later
         Destroy(gameObject);
     }
 
@@ -172,5 +175,13 @@ public class BarracudaBehavior : EnemyBehavior
     public void animateStunned()
     {
 
+    }
+
+    public void animateDead()
+    {
+        maxMoveSpeed = 0;
+        
+        anim.SetBool("stunned", true);
+        anim.SetBool("dying", true);
     }
 }
