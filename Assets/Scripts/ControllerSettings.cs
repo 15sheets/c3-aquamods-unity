@@ -34,7 +34,7 @@ public class ControllerSettings : MonoBehaviour
     {
         if (cs != null && cs != this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -42,6 +42,16 @@ public class ControllerSettings : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        playerInputExists = false;
     }
 
     /// <summary>
@@ -63,12 +73,6 @@ public class ControllerSettings : MonoBehaviour
         {
             return null;
         }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
