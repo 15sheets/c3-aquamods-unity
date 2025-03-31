@@ -27,6 +27,9 @@ public class ControllerSettings : MonoBehaviour
     public ModuleInterpreter player1_aq { get; private set; }
     public ModuleInterpreter player2_aq { get; private set; }
 
+    private PlayerInput p1_pinput;
+    private PlayerInput p2_pinput;
+
     private void Awake()
     {
         if (cs != null && cs != this)
@@ -39,6 +42,27 @@ public class ControllerSettings : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    /// <summary>
+    /// returns PlayerInput of player associated with id -- should be 1 or 2
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public PlayerInput getPlayer(int id)
+    {
+        if (id == 1)
+        {
+            return p1_pinput;
+        } 
+        else if (id == 2)
+        {
+            return p2_pinput;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -76,6 +100,8 @@ public class ControllerSettings : MonoBehaviour
             player1_aq = createNewAQPlayer();
             player1_aq.net = player1_net;
             player1_aq.transform.parent = StatMan.sm.subfollow;
+
+            p1_pinput = player1_aq.GetComponent<PlayerInput>();
         }
         else
         {
@@ -83,6 +109,8 @@ public class ControllerSettings : MonoBehaviour
             player1_kc.mod1.net = player1_net;
             player1_kc.mod2.net = player1_net;
             player1_kc.transform.parent = StatMan.sm.subfollow;
+
+            p1_pinput = player1_kc.GetComponent<PlayerInput>();
         }
     }
 
@@ -93,6 +121,8 @@ public class ControllerSettings : MonoBehaviour
             player2_aq = createNewAQPlayer();
             player2_aq.net = !player1_net;
             player2_aq.transform.parent = StatMan.sm.subfollow;
+
+            p2_pinput = player1_aq.GetComponent<PlayerInput>();
         }
         else
         {
@@ -100,6 +130,8 @@ public class ControllerSettings : MonoBehaviour
             player2_kc.mod1.net = !player1_net;
             player2_kc.mod2.net = !player1_net;
             player2_kc.transform.parent = StatMan.sm.subfollow;
+
+            p2_pinput = player1_kc.GetComponent<PlayerInput>();
         }
     }
 

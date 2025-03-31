@@ -525,7 +525,7 @@ Transform:
   m_GameObject: {fileID: 387437816}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.1, y: -27.66, z: 0}
+  m_LocalPosition: {x: 6.11, y: -27.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -556,7 +556,7 @@ Transform:
   m_GameObject: {fileID: 453381925}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.38, y: -27.66, z: 0}
+  m_LocalPosition: {x: 20.119999, y: -27.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -587,7 +587,7 @@ Transform:
   m_GameObject: {fileID: 944467737}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.12, y: -20.05, z: 0}
+  m_LocalPosition: {x: -13.7, y: -20.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -797,11 +797,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 51228712104886630, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.51
+      value: -3.124
       objectReference: {fileID: 0}
     - target: {fileID: 51228712104886630, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0999997
+      value: 0.526
       objectReference: {fileID: 0}
     - target: {fileID: 51228712104886630, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -936,6 +936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1558538164}
+  - component: {fileID: 1558538165}
   m_Layer: 0
   m_Name: fish spawner
   m_TagString: Untagged
@@ -967,6 +968,30 @@ Transform:
   - {fileID: 1640896653}
   m_Father: {fileID: 368807164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1558538165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558538163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 782376a4c1b98a645bbd542fd20fe3f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnInterval: 3
+  spawnsPerSpawn: 2
+  fishVarieties: 3
+  fishPrefabs:
+  - {fileID: 1527268676880806825, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}
+  - {fileID: 1670376740949943907, guid: ab1b186a0df93ed4c9f88d4363e1728b, type: 3}
+  - {fileID: 2782218538901427153, guid: 808dec8db44ca1b4995a126e26cf51a5, type: 3}
+  numFishToSpawn: 040000000100000001000000
+  fishWeights:
+  - 0
+  - 0
+  - 0
 --- !u!1 &1561837149
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +1017,7 @@ Transform:
   m_GameObject: {fileID: 1561837149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.26, y: -20.05, z: 0}
+  m_LocalPosition: {x: 26, y: -20.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1173,7 +1198,7 @@ Transform:
   m_GameObject: {fileID: 1640896652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.9, y: -20.05, z: 0}
+  m_LocalPosition: {x: 12.9, y: -20.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1204,7 +1229,7 @@ Transform:
   m_GameObject: {fileID: 1704290918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.38, y: -27.66, z: 0}
+  m_LocalPosition: {x: -20, y: -27.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1388,7 +1413,7 @@ Transform:
   m_GameObject: {fileID: 1955464224}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.85, y: -27.66, z: 0}
+  m_LocalPosition: {x: -6.12, y: -27.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1419,7 +1444,7 @@ Transform:
   m_GameObject: {fileID: 1992556029}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.26, y: -20.05, z: 0}
+  m_LocalPosition: {x: -25.880001, y: -20.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1456,19 +1481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1670376740949943907, guid: ab1b186a0df93ed4c9f88d4363e1728b, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2327871977281195829, guid: ab1b186a0df93ed4c9f88d4363e1728b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.32722524
-      objectReference: {fileID: 0}
-    - target: {fileID: 2327871977281195829, guid: ab1b186a0df93ed4c9f88d4363e1728b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.32722524
-      objectReference: {fileID: 0}
-    - target: {fileID: 2327871977281195829, guid: ab1b186a0df93ed4c9f88d4363e1728b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.52732337
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2327871977281195829, guid: ab1b186a0df93ed4c9f88d4363e1728b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1630,23 +1643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2782218538901427153, guid: 808dec8db44ca1b4995a126e26cf51a5, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5137532673796295388, guid: 808dec8db44ca1b4995a126e26cf51a5, type: 3}
-      propertyPath: knockbackForce
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5594148118003031984, guid: 808dec8db44ca1b4995a126e26cf51a5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.39387864
-      objectReference: {fileID: 0}
-    - target: {fileID: 5594148118003031984, guid: 808dec8db44ca1b4995a126e26cf51a5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.39387864
-      objectReference: {fileID: 0}
-    - target: {fileID: 5594148118003031984, guid: 808dec8db44ca1b4995a126e26cf51a5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.39387864
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5594148118003031984, guid: 808dec8db44ca1b4995a126e26cf51a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1823,10 +1820,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2183210029569324642, guid: 244ec21e311613442a244eec9b859347, type: 3}
-      propertyPath: m_Size.x
-      value: 65.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4365896784496572575, guid: 244ec21e311613442a244eec9b859347, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2069,18 +2062,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 51228712104886630, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.41285378
-      objectReference: {fileID: 0}
-    - target: {fileID: 51228712104886630, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.41285378
-      objectReference: {fileID: 0}
-    - target: {fileID: 51228712104886630, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.41285378
-      objectReference: {fileID: 0}
-    - target: {fileID: 51228712104886630, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.12
       objectReference: {fileID: 0}
@@ -2126,7 +2107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1527268676880806825, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5601410888401433581, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}
       propertyPath: m_IsActive

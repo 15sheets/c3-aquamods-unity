@@ -632,7 +632,7 @@ MonoBehaviour:
   maxRotationSpeed: 100
   maxHspeed: 3
   hForce: 3
-  vSpeedRange: {x: 1, y: 3}
+  vSpeedRange: {x: 1, y: 4}
   vForce: 10
   motorSmoothTime: 1
   netReady: 0
