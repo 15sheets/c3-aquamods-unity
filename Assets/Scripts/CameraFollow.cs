@@ -1,9 +1,12 @@
+using UnityEditor;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform toFollow;
-    [SerializeField] private float smoothTime;
+    public Transform toFollow;
+    public float smoothTime;
+
     //public float marginY = 0;
     //public float marginX;
 
@@ -30,6 +33,11 @@ public class CameraFollow : MonoBehaviour
         transform.position = new Vector3(cameraX, cameraY, transform.position.z);
         */
         Vector3 target = Vector3.SmoothDamp(transform.position, toFollow.position, ref velocity, smoothTime);
+        setPos(target);
+    }
+
+    public virtual void setPos(Vector3 target)
+    {
         transform.position = new Vector3(target.x, toFollow.position.y, transform.position.z);
     }
 }

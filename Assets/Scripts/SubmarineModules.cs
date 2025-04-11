@@ -21,12 +21,19 @@ public class SubmarineModules : MonoBehaviour
 
     [SerializeField] private float maxRotationSpeed; // guns, shield share a rotation speed
     [SerializeField] private float maxHspeed; // max horizontal travel speed
-    [SerializeField] private float hForce;
     [SerializeField] private Vector2 vSpeedRange;
-    [SerializeField] private float vForce;
 
     [SerializeField] private float motorSmoothTime;
     private float motorRefVel = 0;
+
+    [SerializeField] private ParticleSystem motorParticles;
+    private ParticleSystem.MainModule mp_main;
+    private ParticleSystem.EmissionModule mp_emission;
+
+    [SerializeField] private Vector2 mp_speed;
+    [SerializeField] private Vector2 mp_rate;
+    [SerializeField] private Vector2 mp_minsizes;
+    [SerializeField] private Vector2 mp_maxsizes;
 
     // variables related to gun cooldowns
     public bool netReady;
@@ -64,7 +71,9 @@ public class SubmarineModules : MonoBehaviour
     {
         ph = GetComponent<PhysicsHelper>();
         rb = GetComponent<Rigidbody2D>();
-        //playerhp = battery.GetComponent<Health>();
+
+        mp_main = motorParticles.main;
+        mp_emission = motorParticles.emission;
 
         StatMan.sm.setSubmarine(this);
         newHarpoon();
@@ -103,22 +112,25 @@ public class SubmarineModules : MonoBehaviour
             newNet();
         }
 
+        // update motor particle system stats
+        float vspeedpercent = getVSpeedPercent();
+
+        mp_main.startSpeed = Mathf.Lerp(mp_speed[0], mp_speed[1], vspeedpercent);
+        mp_emission.rateOverTime = Mathf.Lerp(mp_rate[0], mp_rate[1], vspeedpercent);
+        mp_main.startSize = new ParticleSystem.MinMaxCurve(Mathf.Lerp(mp_minsizes[0], mp_minsizes[1], vspeedpercent), 
+                                                           Mathf.Lerp(mp_maxsizes[0], mp_maxsizes[1], vspeedpercent));
     }
 
     private void FixedUpdate()
     {
         // move horizontally
-        //ph.ApplyForceToReachVelocity(new Vector2(hspeedInput * maxHspeed, 0), force: hForce, moveX: true);
         currVel.x = Mathf.SmoothDamp(currVel.x, hspeedInput * maxHspeed, ref refvelx, smoothTime);
-        //float nextHPos = transform.position.x + hspeedInput * maxHspeed;
 
         // move vertically
         float targetVy = -Mathf.Lerp(vSpeedRange[0], vSpeedRange[1], vspeedInput);
         currVel.y = Mathf.SmoothDamp(currVel.y, targetVy, ref refvely, smoothTime);
 
         rb.MovePosition(transform.position + currVel * Time.deltaTime);
-
-        //ph.ApplyForceToReachVelocity(new Vector2(0, targetVy), force: vForce, moveY: true);
     }
 
 // private functions
@@ -216,6 +228,11 @@ public class SubmarineModules : MonoBehaviour
 
     public Vector2 getVelocity()
     {
-        return rb.linearVelocity;
+        return currVel;
+    }
+
+    public float getVSpeedPercent()
+    {
+        return (-currVel.y - vSpeedRange[0]) / (vSpeedRange[1] - vSpeedRange[0]);  
     }
 }
