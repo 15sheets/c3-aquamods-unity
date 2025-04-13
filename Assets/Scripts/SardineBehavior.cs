@@ -22,9 +22,13 @@ public class SardineBehavior : EnemyBehavior
     private Transform sprite;
     [SerializeField]
     private Animator anim;
+    [SerializeField]
+    private ParticleSystem ps;
 
     // if the current attack hit the player or not
     private bool hitPlayer;
+    private bool hitShield;
+    private bool playerDamaged;
 
 // these functions help update state in fsm
     public override bool canIdle()
@@ -42,8 +46,8 @@ public class SardineBehavior : EnemyBehavior
         return (targetvector.magnitude < attackRadius);
     }
 
-// these functions are for collision
-    
+ // these functions are for collision
+
     // when hitting a net or a harpoon
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -51,6 +55,10 @@ public class SardineBehavior : EnemyBehavior
         if (collision.gameObject.layer == 10 || collision.gameObject.layer == 11) // net || harpoon
         {
             rb.linearVelocity = Vector2.zero;
+
+            ps.Play();
+            //ps.transform.parent = null;
+
             anim.SetBool("dying", true);
         } 
     }
@@ -59,11 +67,15 @@ public class SardineBehavior : EnemyBehavior
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // check if player or shield
-        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 12)
+        if ((collision.gameObject.layer == 6 || collision.gameObject.layer == 12))
         {
             hitPlayer = true;
             rb.AddForce(targetvector.normalized * -knockbackForce, ForceMode2D.Impulse);
-            if (collision.gameObject.layer == 6) StatMan.sm.damagePlayer(playerDamage);
+            
+            if (collision.gameObject.layer == 6)
+            {
+                StatMan.sm.damagePlayer(playerDamage);
+            }
         }
         // damage player
         // small backwards impulse

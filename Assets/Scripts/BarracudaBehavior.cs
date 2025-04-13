@@ -20,6 +20,7 @@ public class BarracudaBehavior : EnemyBehavior
 
     [SerializeField] private Transform sprite;
     [SerializeField] private Animator anim;
+    [SerializeField] private ParticleSystem ps;
 
     // if the current attack hit the player or not
     private bool hitPlayer;
@@ -73,6 +74,8 @@ public class BarracudaBehavior : EnemyBehavior
         {
             // damage
             hp.damageamt(StatMan.sm.harpoonDamage);
+            rb.AddForce(targetvector.normalized * -knockbackForce, ForceMode2D.Impulse);
+
             animateDamaged();
         }
     }
@@ -169,6 +172,8 @@ public class BarracudaBehavior : EnemyBehavior
 
     public void animateDamaged()
     {
+        ps.Play();
+
         anim.SetTrigger("damaged");
     }
 

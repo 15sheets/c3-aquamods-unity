@@ -30,6 +30,8 @@ public class SailfishBehavior : EnemyBehavior
     [SerializeField] private Collider2D coll;
     [SerializeField] private Collider2D trig;
 
+    [SerializeField] private ParticleSystem ps;
+
     // if the current attack hit the player or not
     private bool hitPlayer;
 
@@ -220,6 +222,9 @@ public class SailfishBehavior : EnemyBehavior
     public void animateDeath()
     {
         maxMoveSpeed = 0;
+
+        ps.Play();
+        //ps.transform.parent = null;
 
         anim.SetBool("dying", true);
     }
