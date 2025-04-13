@@ -222,6 +222,7 @@ public class SailfishBehavior : EnemyBehavior
     public void animateDeath()
     {
         maxMoveSpeed = 0;
+        attackSpeed = 0;
 
         ps.Play();
         //ps.transform.parent = null;

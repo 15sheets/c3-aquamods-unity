@@ -6,15 +6,22 @@ public class SpawnManager : MonoBehaviour
     public float spawnInterval; // how long to wait between spawning more fish
     public int spawnsPerSpawn; // number of spawnPoints fish should spawn from every spawn interval
 
+    public Vector2 obstacleInterval;
+    public int obstaclesPerSpawn;
+
     public int fishVarieties;
     public GameObject[] fishPrefabs;
     public int[] numFishToSpawn;
     public float[] fishWeights;
+
+    public GameObject[] obstaclePrefabs;
+
     //private int[] randomizeFish;
     
     private Transform[] spawnPoints;
     private int[] randomizeSpawn;
     private float spawnTimer;
+    private float obstacleTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,6 +38,7 @@ public class SpawnManager : MonoBehaviour
         }
 
         spawnTimer = -1;
+        obstacleTimer = 1;
     }
 
     // Update is called once per frame
@@ -45,7 +53,16 @@ public class SpawnManager : MonoBehaviour
         {
             spawnTimer -= Time.deltaTime;
         }
-        //spawnTimer = (spawnTimer < 0) ? spawnInterval : spawnTimer - Time.deltaTime;
+
+        if (obstacleTimer < 0)
+        {
+            spawnObstacles(obstaclesPerSpawn);
+            obstacleTimer = Random.Range(obstacleInterval[0], obstacleInterval[1]);
+        }
+        else
+        {
+            obstacleTimer -= Time.deltaTime;
+        }
     }
 
     public void updateFishSettings(int _fishVarieties, GameObject[] _fishPrefabs, int[] _numFishToSpawn, float[] _fishWeights)
@@ -88,6 +105,21 @@ public class SpawnManager : MonoBehaviour
             {
                 Instantiate(fishPrefabs[fishidx], spawnPoints[randomizeSpawn[i]].position + j * new Vector3(0, -0.53f, 0), spawnPoints[randomizeSpawn[i]].rotation);
             }
+
+        }
+    }
+
+    public void spawnObstacles(int num)
+    {
+        shuffleSpawnIdx();
+
+        // spawn (num fish to spawn) amount of obstacles at (num) amount of random spawn points
+        for (int i = 0; i < num; i++) // number of spawnpoints to spawn at
+        {
+            // pick a random obstacle type
+            int fishidx = Random.Range(0, obstaclePrefabs.Length);
+
+            Instantiate(obstaclePrefabs[fishidx], spawnPoints[randomizeSpawn[i]].position, spawnPoints[randomizeSpawn[i]].rotation);
 
         }
     }
