@@ -840,10 +840,10 @@
                 {
                     "name": "",
                     "id": "d47d8393-8e15-4edb-99a7-961bd2251f46",
-                    "path": "",
+                    "path": "<HID::Arduino LLC Arduino Leonardo>/button2",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Arduino",
                     "action": "battery",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -851,10 +851,10 @@
                 {
                     "name": "",
                     "id": "5c278450-010d-42a6-855a-869df86f4896",
-                    "path": "",
+                    "path": "<HID::Arduino LLC Arduino Leonardo>/trigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Arduino",
                     "action": "fire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -862,10 +862,10 @@
                 {
                     "name": "",
                     "id": "8215b9e3-061f-49cc-a5e2-fe96e63ac832",
-                    "path": "",
+                    "path": "<HID::Arduino LLC Arduino Leonardo>/ry",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Arduino",
                     "action": "shield",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -873,10 +873,10 @@
                 {
                     "name": "",
                     "id": "c97f7d59-2329-4816-bda3-707250e14ec2",
-                    "path": "",
+                    "path": "<HID::Arduino LLC Arduino Leonardo>/stick/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Arduino",
                     "action": "steer",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -884,10 +884,10 @@
                 {
                     "name": "",
                     "id": "b548eaaa-afda-4d32-b612-f9ee07a673b9",
-                    "path": "",
+                    "path": "<HID::Arduino LLC Arduino Leonardo>/stick/y",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Arduino",
                     "action": "speed",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -895,10 +895,10 @@
                 {
                     "name": "",
                     "id": "eb29f96f-4111-4d21-8e8b-2c0d47e06e85",
-                    "path": "",
+                    "path": "<HID::Arduino LLC Arduino Leonardo>/rx",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Arduino",
                     "action": "aim",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -935,6 +935,17 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Arduino",
+            "bindingGroup": "Arduino",
+            "devices": [
+                {
+                    "devicePath": "<HID::Arduino LLC Arduino Leonardo>",
                     "isOptional": false,
                     "isOR": false
                 }

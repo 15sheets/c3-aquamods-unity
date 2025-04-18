@@ -218,7 +218,7 @@ MonoBehaviour:
     m_ActionId: ffa0be03-b205-48b4-a3dd-783c855af5e2
     m_ActionName: AquaMods/aim
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Arduino
   m_DefaultActionMap: AquaMods
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
