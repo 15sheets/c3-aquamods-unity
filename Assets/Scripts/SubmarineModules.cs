@@ -171,7 +171,7 @@ public class SubmarineModules : MonoBehaviour
 // public functions for controller interface
     public void setSteer(float input) // input range from [-1, 1]
     {
-        hspeedInput = input;
+        hspeedInput = 3 * input;
     }
 
     public void setSpeed(float input, bool keycon) // speed setting; keycon is true if not using custom controllers
@@ -187,12 +187,12 @@ public class SubmarineModules : MonoBehaviour
 
     public void setNetAim(float input) // input range from [-1, 1]
     {
-        netAimInput = input;
+        netAimInput = 5 * input;
     }
 
     public void setHarpoonAim(float input) // input range from [-1, 1]
     {
-        harpoonAimInput = input;
+        harpoonAimInput = 5 * input;
     }
 
     public void setNetFire(bool input) // button
@@ -207,10 +207,10 @@ public class SubmarineModules : MonoBehaviour
 
     public void setShield(float input) // input range from [-1, 1]
     {
-        shieldInput = input;
+        shieldInput = 5 * input;
     }
 
-    public void setBattery(bool input)
+    public void setBattery(bool input) // button
     {
         batteryInput = input;
     }
