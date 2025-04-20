@@ -54,9 +54,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnInterval: 2
+  spawnIntervalDecrease: 0.25
+  spawnIntervalDecreaseMeters: 100
   spawnsPerSpawn: 1
+  spawnsIncrease: 1
+  spawnsIncreaseMeters: 50
   obstacleInterval: {x: 4, y: 7}
   obstaclesPerSpawn: 3
+  obstaclesIncrease: 1
+  obstaclesIncreaseMeters: 75
   fishVarieties: 3
   fishPrefabs:
   - {fileID: 1527268676880806825, guid: fe32c78d5817bf64aa3ecb3d13f9a9fd, type: 3}

@@ -41,17 +41,17 @@ public class ControllerSettings : MonoBehaviour
             cs = this;
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        //SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        playerInputExists = false;
+        //playerInputExists = false;
     }
 
     /// <summary>

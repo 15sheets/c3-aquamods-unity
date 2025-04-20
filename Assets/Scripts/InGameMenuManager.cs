@@ -58,4 +58,11 @@ public class InGameMenuManager : MonoBehaviour
         string currSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currSceneName);
     }
+
+    public void gotoTitle()
+    {
+        Time.timeScale = 1;
+
+        SceneManager.LoadScene(0);
+    }
 }

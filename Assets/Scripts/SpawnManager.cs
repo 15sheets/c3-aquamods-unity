@@ -4,10 +4,21 @@ using UnityEngine.Rendering;
 public class SpawnManager : MonoBehaviour
 {
     public float spawnInterval; // how long to wait between spawning more fish
+    public float spawnIntervalDecrease;
+    public float spawnIntervalDecreaseMeters;
+    private float minSpawnInterval = 0.5f;
+    private float lastSpawnIntervalDecrease = 0;
+    
     public int spawnsPerSpawn; // number of spawnPoints fish should spawn from every spawn interval
+    public int spawnsIncrease;
+    public int spawnsIncreaseMeters;
+    private float lastSpawnIncrease = 0;
 
     public Vector2 obstacleInterval;
     public int obstaclesPerSpawn;
+    public int obstaclesIncrease;
+    public int obstaclesIncreaseMeters;
+    private float lastObstacleIncrease=0;
 
     public int fishVarieties;
     public GameObject[] fishPrefabs;
@@ -26,6 +37,10 @@ public class SpawnManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        lastSpawnIntervalDecrease = 0;
+        lastSpawnIncrease = 0;
+        lastObstacleIncrease = 0;
+
         spawnPoints = new Transform[transform.childCount];
         randomizeSpawn = new int[transform.childCount];
 
@@ -44,6 +59,27 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // adjust difficulty over time
+        float depth = -StatMan.sm.submods.transform.position.y;
+
+        if (depth - lastSpawnIntervalDecrease > spawnIntervalDecreaseMeters)
+        {
+            lastSpawnIntervalDecrease = depth;
+            spawnInterval = (spawnInterval - spawnIntervalDecrease < minSpawnInterval) ? minSpawnInterval : spawnInterval - spawnIntervalDecrease;
+        }
+        if (depth - lastSpawnIncrease > spawnsIncreaseMeters)
+        {
+            lastSpawnIncrease = depth;
+            spawnsPerSpawn = (spawnsPerSpawn + spawnsIncrease > transform.childCount) ? spawnsPerSpawn : spawnsPerSpawn + spawnsIncrease;
+        }
+        if (depth - lastObstacleIncrease > obstaclesIncreaseMeters)
+        {
+            lastObstacleIncrease = depth;
+            obstaclesPerSpawn = (obstaclesPerSpawn + obstaclesIncrease > transform.childCount) ? obstaclesPerSpawn : obstaclesPerSpawn + obstaclesIncrease;
+        }
+
+
+        // spawn enemies
         if (spawnTimer < 0)
         {
             spawnRandomFish(spawnsPerSpawn);
@@ -54,6 +90,7 @@ public class SpawnManager : MonoBehaviour
             spawnTimer -= Time.deltaTime;
         }
 
+        // spawn obstacles
         if (obstacleTimer < 0)
         {
             spawnObstacles(obstaclesPerSpawn);
