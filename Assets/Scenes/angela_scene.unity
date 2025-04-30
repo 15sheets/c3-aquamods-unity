@@ -2786,6 +2786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sprite
       objectReference: {fileID: 0}
+    - target: {fileID: 5798695482690227141, guid: 79c988ced220a1d4398fd8834c7ce143, type: 3}
+      propertyPath: maxHspeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8537714458800738652, guid: 79c988ced220a1d4398fd8834c7ce143, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
