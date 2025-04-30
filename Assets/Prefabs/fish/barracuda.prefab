@@ -430,8 +430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dc989d01ada9c4a8161e4bcfe783d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 3
-  maxMoveForce: 15
+  maxMoveSpeed: 6
+  maxMoveForce: 30
   stunTime: 0.25
   attackStart: 0
   attackDone: 0
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  maxhp: 6
+  maxhp: 4
   hp: 0
   healingPerSecond: 0
   death:

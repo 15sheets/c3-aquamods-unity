@@ -175,37 +175,37 @@ public class ModuleInterpreter : MonoBehaviour
     
     public void setSpeed(InputAction.CallbackContext input)
     {
-        submarine.setSpeed(input.ReadValue<float>(), false);
+        if (submarine != null) submarine.setSpeed(input.ReadValue<float>(), false);
     }
 
     public void setSteer(InputAction.CallbackContext input)
     {
-        submarine.setSteer(input.ReadValue<float>());
+        if (submarine != null) submarine.setSteer(input.ReadValue<float>());
     }
 
     public void setShield(InputAction.CallbackContext input)
     {
-        submarine.setShield(input.ReadValue<float>());
+        if (submarine != null) submarine.setShield(input.ReadValue<float>());
     }
 
     public void setAim(InputAction.CallbackContext input)
     {
-        if (net) { submarine.setNetAim(input.ReadValue<float>()); } // maybe it's more optimal to have this be one function with an extra input? shrug
-        else { submarine.setHarpoonAim(input.ReadValue<float>()); }
+        if (net && submarine != null) { submarine.setNetAim(input.ReadValue<float>()); } // maybe it's more optimal to have this be one function with an extra input? shrug
+        else if (submarine != null) { submarine.setHarpoonAim(input.ReadValue<float>()); }
     }
 
     public void setShoot(InputAction.CallbackContext input)
     {
         bool button = input.ReadValueAsButton();
 
-        if (net) { submarine.setNetFire(button); }
-        else { submarine.setHarpoonFire(button); }
+        if (net && submarine != null) { submarine.setNetFire(button); }
+        else if (submarine != null) { submarine.setHarpoonFire(button); }
     }
 
     public void setBattery(InputAction.CallbackContext input)
     {
         bool button = input.ReadValueAsButton();
-        submarine.setBattery(button);
+        if (submarine != null) submarine.setBattery(button);
     }
     
 }
